@@ -88,7 +88,7 @@ const clienteController = {
             const clienteAtual = await clienteModel.selectById(idCliente);
 
             if (clienteAtual.length === 0) {
-                return res.status(200).json({message: 'Produto não localizado'});
+                return res.status(200).json({message: 'Cliente não localizado'});
             };
             
             const novoNome = nome ?? clienteAtual[0].nome_cliente; // coalescência nula ( ?? )
@@ -126,16 +126,16 @@ deletaCliente: async (req, res) => {
         const clienteSelecionado = await clienteModel.selectById(idCliente)
 
         if (clienteSelecionado.length === 0) {
-            return res.status(200).json({message: 'Produto não localizado.'})
+            return res.status(200).json({message: 'Cliente não localizado.'})
         };
 
         const resultadoDelete = await clienteModel.delete(idCliente)
 
         if (resultadoDelete.affectedRows === 0) {
-            return res.status(200).json({message: 'Ocorreu um erro ao deletar o produto.'})
+            return res.status(200).json({message: 'Ocorreu um erro ao deletar o cliente.'})
         };
 
-        res.status(201).json({message: 'Produto excluído com sucesso!'});
+        res.status(201).json({message: 'Cliente excluído com sucesso!'});
 
         
     } catch (error) {
