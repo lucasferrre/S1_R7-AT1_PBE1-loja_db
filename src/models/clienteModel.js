@@ -30,7 +30,7 @@ const clienteModel = {
         return rows;
     },
 
-    
+
 
     selectByCpf: async (pCpf) => {
         const sql = 'SELECT cpf_cliente FROM clientes WHERE cpf_cliente=?;';
@@ -48,7 +48,7 @@ const clienteModel = {
      * @example
      * const result = await clienteModel.insert(paramA, paramB);
      * // saída
-	 * "result": {
+     * "result": {
      *	    "fieldCount": 0,
      *	    "affectedRows": 1,
      *	    "insertId": 1,
@@ -56,7 +56,7 @@ const clienteModel = {
      *	    "serverStatus": 2,
      *	    "warningStatus": 0,
      *	    "changedRows": 0
-	 *   }
+     *   }
      */
     insert: async (pNome, pCpf) => {
         const sql = 'INSERT INTO clientes(nome_cliente, cpf_cliente) VALUES (?,?);';
@@ -66,13 +66,13 @@ const clienteModel = {
     },
 
 
-/**
- * 
- * @param {number} pId 
- * @param {string} pNome 
- * @param {string} pCpf 
- * @returns {Promise<Object>}
- */
+    /**
+     * 
+     * @param {number} pId 
+     * @param {string} pNome 
+     * @param {string} pCpf 
+     * @returns {Promise<Object>}
+     */
 
     update: async (pId, pNome, pCpf) => {
         const sql = 'UPDATE clientes SET nome_cliente=?, cpf_cliente=? WHERE id_cliente =?;';
