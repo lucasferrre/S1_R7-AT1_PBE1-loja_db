@@ -1,4 +1,3 @@
-const { fdatasync } = require('fs');
 const { pool } = require('../config/db');
 
 const produtoModel = {
