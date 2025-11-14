@@ -122,7 +122,7 @@ deletaProduto: async (req, res) => {
             return res.status(200).json({message: 'Ocorreu um erro ao deletar o produto.'})
         };
 
-        res.status(201).json({message: 'Produto excluído com sucesso!'});
+        res.status(200).json({message: 'Produto excluído com sucesso!'});
 
         
     } catch (error) {
