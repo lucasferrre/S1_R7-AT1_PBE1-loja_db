@@ -113,7 +113,6 @@ CREATE TABLE IF NOT EXISTS itens_pedido (
 SELECT * from itens_pedido;
 
 
-
 -- atualiza o valor_total do pedido caso um item swja alterado
 DELIMITER $$
 CREATE TRIGGER trg_atualiza_valor_pedido_after_update
@@ -134,9 +133,16 @@ BEGIN
 END $$
 
 DELIMITER ;
+	
+-- atualiza o valor_total do pedido caso um item seja deletado
+DELIMITER $$
+CREATE TRIGGER trg_atualiza_valor_pedido_after_delete
+AFTER DELETE ON itens_pedido
+FOR EACH ROW
+BEGIN
+    UPDATE pedidos
+    SET valor_total = valor_total - (OLD.quantidade * OLD.valor_item )
+    WHERE id_pedido = OLD.id_pedido;
+END $$
 
-
-
-
-
-
+DELIMITER ;
